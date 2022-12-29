@@ -8,14 +8,12 @@ import android.widget.EditText;
 
 import datos.PersonalContratado;
 
-public class MainActivity extends AppCompatActivity
-{
-        EditText etDato1, etDato2, etDato3, etResultado;
-        PersonalContratado pc;
+public class MainActivity extends AppCompatActivity {
+    EditText etDato1, etDato2, etDato3, etResultado;
+    PersonalContratado pc;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -26,8 +24,7 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    public void btnMostrar(View v)
-    {
+    public void btnMostrar(View v) {
         pc = new PersonalContratado();
         double aux;
 
@@ -41,7 +38,7 @@ public class MainActivity extends AppCompatActivity
         etResultado.setText("");
         etResultado.append("Nombre: " + pc.nombre + "\n");
         etResultado.append("Calcular suelto bruto: " + pc.getSueldoBruto() + "\n");
-        etResultado.append("Sueldo neto: " + pc.calcularSueldoNeto());
+        etResultado.append("Sueldo neto: " + pc.calcularSueldoNeto() + ".");
     }
 
 }
