@@ -9,7 +9,7 @@ import android.widget.EditText;
 import datos.PersonalContratado;
 
 public class MainActivity extends AppCompatActivity {
-    EditText etDato1, etDato2, etDato3, etResultado;
+    EditText etDato1, etDato2, etDato3, etDato4, etResultado;
     PersonalContratado pc;
 
     @Override
@@ -20,8 +20,10 @@ public class MainActivity extends AppCompatActivity {
         etDato1 = findViewById(R.id.editTextTextPersonName);
         etDato2 = findViewById(R.id.editTextTextPersonName2);
         etDato3 = findViewById(R.id.editTextTextPersonName3);
+        etDato4 = findViewById(R.id.editTextTextPersonName4);
         etResultado = findViewById(R.id.editTextTextMultiLine);
 
+        PersonalContratado.tarifaXHora = 60;
     }
 
     public void btnMostrar(View v) {
@@ -31,14 +33,15 @@ public class MainActivity extends AppCompatActivity {
         pc.nombre = etDato1.getText().toString();
         pc.nroHorasTrabajadas = Double.parseDouble(etDato2.getText().toString());
         aux = Double.parseDouble((etDato3.getText().toString()));
+        pc.HorasExtras = Double.parseDouble(etDato4.getText().toString());
         pc.setDescuento(aux);
-        pc.tarifaXHora = 60;
         pc.calcularSueldoBruto();
 
         etResultado.setText("");
-        etResultado.append("Nombre: " + pc.nombre + "\n");
+        etResultado.append("Nombre y apellidos: " + pc.nombre + "\n");
         etResultado.append("Calcular suelto bruto: " + pc.getSueldoBruto() + "\n");
-        etResultado.append("Sueldo neto: " + pc.calcularSueldoNeto() + ".");
+        etResultado.append("Sueldo neto: " + pc.calcularSueldoNeto() + "\n");
+        etResultado.append("Sueldo Extra" + pc.calcularSueldoExtra()+ "\n");
     }
 
 }
